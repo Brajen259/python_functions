@@ -1,0 +1,21 @@
+## Description: date_extend function can take two dates(start_date, end_date) and generate all dates in between to return list of dates.
+## As this does not use nay loop performance is better comparatively.
+## usage :  date_extend('2018-08-01', '2019-08-01') ## this will return a list of dates
+## usage :  date_extend_str('2018-08-01', '2019-08-01') ## this will return a string of dates
+
+## extend one record of a user to n records based on start_date and number_days     
+def date_extend(start_date, end_date):
+    start_date = parser.parse(start_date)
+    end_date = parser.parse(end_date)
+    all_dates = list(rrule.rrule(rrule.DAILY,dtstart= start_date, until=end_date))
+#    all_dates_str = ', '.join([x.strftime('%Y-%m-%d') for x in all_dates])
+    return all_dates
+
+
+## extend one record of a user to n records based on start_date and number_days     
+def date_extend_str(start_date, end_date):
+    start_date = parser.parse(start_date)
+    end_date = parser.parse(end_date)
+    all_dates = list(rrule.rrule(rrule.DAILY,dtstart= start_date, until=end_date))
+    all_dates_str = ', '.join([x.strftime('%Y-%m-%d') for x in all_dates])
+    return all_dates_str
